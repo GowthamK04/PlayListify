@@ -1,5 +1,5 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
-const redirectUri = 'http://localhost:57179/';
+const redirectUri = 'https://playlistifykg.netlify.app';
 let accessToken;
 
 const Spotify = {
