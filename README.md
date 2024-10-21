@@ -6,9 +6,9 @@ This project is a React web application called PlayListify. The application leve
 
 ## Feautures ##
 
-* Users can search for songs by song title, album name, artitst's name, genre, etc.
-*  Users can see information about each song like title, artist, and album for songs they queried.
-* Users can export their custom playlist to their personal Spotify account.
+* Users can search for songs by song title, album name, artist's name, genre, etc.
+*  Users can see information about each song, such as the title, artist, and album of the songs they queried.
+* Users can export their custom playlists to their personal Spotify account.
 
 ## Technologies Used ##
 
@@ -21,16 +21,16 @@ This project is a React web application called PlayListify. The application leve
 * HTTP Requests and Responses
 * Authentication
 
-## Breif Outline ##
+## Brief Outline ##
 
 #### 1. Setting up Local Environment ####
 
 #### 2. Creating components to structure the application. The core components of the interface included: ####
 
 * App: This served as the main component, managing the overall functionality and state of the application.
-* SearchBar: This component handled the user input for searching songs in the Spotify library.
+* SearchBar: This component handles the user input for searching songs in the Spotify library.
 * SearchResults: This displayed the list of songs returned from the search query.
-* Playlist: This component allowed users to create and manage their custom playlist.
+* Playlist: This component allows users to create and manage their custom playlists.
 * Tracklist: This was responsible for rendering a list of tracks, either from the search results or the playlist.
 * Track: Each individual track was represented by this component, handling track-specific functionality such as adding or removing from the playlist.
 
@@ -50,7 +50,7 @@ This structure ensured a clear and efficient data flow, allowing for seamless up
 
 #### 5. Implementing Addition of Songs To a Custom Playlist
 
-In the PlayListify app, functionality was built to allow users to add songs from the search results to their custom playlist. To implement this, a method was created that handles the addition of a selected song to the playlist when the user clicks the "add" button next to each track in the search results.
+In the PlayListify app, functionality was built to allow users to add songs from the search results to their custom playlists. To implement this, a method was created that handles the addition of a selected song to the playlist when the user clicks the "add" button next to each track in the search results.
 
 This method, housed in the root component, was triggered by the user's interaction with the "add" button. Once clicked, the selected song was passed to the method, which then updated the playlist by adding the track to the playlist array. This updated playlist was then passed down to the relevant child components, ensuring that the added track was immediately reflected in the custom playlist displayed in the app.
 
@@ -62,7 +62,7 @@ In PlayListify, alongside the ability to add songs to a playlist, functionality 
 
 When the "remove" button is clicked, the selected track is passed to this method, which removes the song from the playlist array. The updated playlist, with the track removed, is then passed down through the component tree, ensuring that the changes are immediately reflected in the user interface.
 
-This feature provided users with full control over their playlist, allowing them to easily add and remove tracks as needed while maintaining a smooth and responsive interaction.
+This feature provided users with full control over their playlists, allowing them to easily add and remove tracks as needed while maintaining a smooth and responsive interaction.
 
 #### 7. Implementing Playlist Renaming
 
@@ -70,17 +70,17 @@ In PlayListify, customization was further enhanced by allowing users to rename t
 
 To implement this, functionality was added that allows users to click on the playlist title and modify it directly. When a user clicks on the title, it becomes an editable text field where they can type a new name. Once the user finishes typing and clicks away or hits Enter, the updated name is saved and reflected in the displayed playlist title.
 
-This interactivity was managed through state in the root component, which tracked the current playlist name and passed the updated name down to the relevant child components.
+This interactivity was managed through the state in the root component, which tracked the current playlist name and passed the updated name down to the relevant child components.
 
 #### 8. Saving the Playlist to a User's Account
 
 In PlayListify, one of the key features implemented was the ability for users to export their custom playlist and save it directly to their Spotify account. This functionality was designed to let users finalize their playlist and reset it within the app after saving.
 
-To achieve this, a method was implemented that collects the necessary information, specifically focusing on the track's uri property, which Spotify uses to uniquely reference songs. The method builds an array of uris from the tracks in the playlist, preparing it for submission to the Spotify API.
+To achieve this, a method was implemented that collects the necessary information, specifically focusing on the track's uri property, which Spotify uses to uniquely reference songs. The method builds an array of URIs from the tracks in the playlist, preparing it for submission to the Spotify API.
 
 Although actual API interaction was deferred, mock data was used during development to test the feature. The method simulates saving the playlist by collecting the track URIs, resetting the playlist, and clearing the track list within the web app. This mock implementation ensured that the logic worked as expected, preparing the application for future integration with Spotify's services.
 
-#### 9. Obtaining a Spotify Acess Token
+#### 9. Obtaining a Spotify Access Token
 
 In PlayListify, a dedicated JavaScript module was created to handle the logic for obtaining and managing a user's Spotify access token, enabling the app to make requests to the Spotify API.
 
@@ -94,7 +94,7 @@ In PlayListify, the search bar was connected to the Spotify API, allowing users 
 
 This functionality was implemented by using the `/v1/search?type=track` endpoint from the Spotify API. When a user enters a search term in the search bar and submits it, the app sends a request to the Spotify API, including the search parameter in the query. The access token, previously obtained and stored in the JavaScript module, is attached to the request header for authorization.
 
-Upon receiving a response from the API, the relevant data—such as track name, artist, album, and uri—is extracted and passed to the components responsible for displaying the search results. The results are then rendered for the user in real-time, allowing them to browse tracks based on their search query.
+Upon receiving a response from the API, the relevant data—such as track name, artist, album, and URIs extracted and passed to the components responsible for displaying the search results. The results are then rendered for the user in real-time, allowing them to browse tracks based on their search query.
 
 Refer to the [Spotify Web API Endpoint Reference](https://developer.spotify.com/documentation/web-api/reference#/) for guidance on formatting API requests.
 
@@ -104,7 +104,7 @@ In PlayListify, a method was implemented to allow users to save their custom pla
 
 To achieve this, the method first sends a request to Spotify’s API to create a new playlist in the user’s account. This request includes the playlist’s custom name, which is passed from the user input. Once the new playlist is successfully created, the method retrieves the playlist ID provided in the response.
 
-Next, the app sends another request to add tracks to the newly created playlist. The uri values of each track in the user's custom playlist are collected into an array, which is then sent in the request to the Spotify API. This request appends the tracks to the playlist using the playlist ID obtained earlier.
+Next, the app sends another request to add tracks to the newly created playlist. The URI values of each track in the user's custom playlist are collected into an array, which is then sent in the request to the Spotify API. This request appends the tracks to the playlist using the playlist ID obtained earlier.
 
 Both requests (creating the playlist and adding the tracks) are authenticated using the user's access token, which ensures that the API interactions are secure and authorized.
 
@@ -114,7 +114,7 @@ Once the playlist is saved, the app resets the current playlist, giving users a 
 
 The following potential features are being considered and worked on to enhance the functionality and user experience of the PlayListify app. These improvements aim to streamline playlist creation, improve usability, and provide a more seamless interaction with the Spotify API. They include features that enhance track selection, optimize API handling, and improve overall app responsiveness and feedback.
 
-* Track Preview Samples: Implementing track preview functionality would allow users to listen to short snippets of each song directly from the search results. This feature enhances the user experience by letting users quickly evaluate tracks before adding them to their playlist.
+* Track Preview Samples: Implementing track preview functionality would allow users to listen to short snippets of each song directly from the search results. This feature enhances the user experience by letting users quickly evaluate tracks before adding them to their playlists.
 
 * Loading Screen During Playlist Save: A loading screen or progress indicator could be introduced when a playlist is being saved. This would provide users with clear feedback that their playlist is being processed, preventing confusion and improving the overall user experience.
 
